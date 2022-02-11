@@ -6,19 +6,21 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://example.com">
-  <title>内存管理 | 大志</title>
+  <title>操作系统 | 大志</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="内存管理">
+  <meta name="description" content="五大类型：批处理、分时、实时、网络、分布式操作系统五大功能：处理器管理，存储器管理，设备管理，文件管理，作业管理">
 <meta property="og:type" content="article">
-<meta property="og:title" content="内存管理">
-<meta property="og:url" content="http://example.com/2022/02/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/index.html">
+<meta property="og:title" content="操作系统">
+<meta property="og:url" content="http://example.com/2022/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1/index.html">
 <meta property="og:site_name" content="大志">
-<meta property="og:description" content="内存管理">
+<meta property="og:description" content="五大类型：批处理、分时、实时、网络、分布式操作系统五大功能：处理器管理，存储器管理，设备管理，文件管理，作业管理">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2022-02-10T04:39:25.000Z">
-<meta property="article:modified_time" content="2022-02-10T05:07:08.833Z">
+<meta property="article:published_time" content="2022-02-11T03:59:48.000Z">
+<meta property="article:modified_time" content="2022-02-11T04:45:02.265Z">
 <meta property="article:author" content="大志">
 <meta property="article:tag" content="操作系统">
+<meta property="article:tag" content="五大分类">
+<meta property="article:tag" content="五大功能">
 <meta name="twitter:card" content="summary">
   
   
@@ -150,14 +152,14 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-操作系统" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-操作系统-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      内存管理
+      操作系统
     </h1>
   
 
@@ -179,8 +181,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2022/02/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-  	<time datetime="2022-02-10T04:39:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-10</time>
+<a href="/2022/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1/" class="archive-article-date">
+  	<time datetime="2022-02-11T03:59:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-02-11</time>
 </a>
 
 	<!-- 需要添加的位置 -->
@@ -191,7 +193,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-keyboard-o"></i>
         <span class="post-meta-item-text">  字数统计: </span>
-        <span class="post-count">4字</span>
+        <span class="post-count">1.4k字</span>
       </span>
     </span>
 
@@ -200,7 +202,7 @@
       <span class="post-meta-item-icon">
         <i class="fa fa-hourglass-half"></i>
         <span class="post-meta-item-text">  阅读时长: </span>
-        <span class="post-count">1分</span>
+        <span class="post-count">4分</span>
       </span>
     </span>
 </div>
@@ -209,9 +211,121 @@
         
       </header>
     
+    
+      <!-- 目录内容 -->
+      
+      <!-- 目录内容结束 -->
+    
     <div class="article-entry" itemprop="articleBody">
       
-        <h2 id="内存管理"><a href="#内存管理" class="headerlink" title="内存管理"></a>内存管理</h2>
+        <p>五大类型：批处理、分时、实时、网络、分布式操作系统<br>五大功能：处理器管理，存储器管理，设备管理，文件管理，作业管理</p>
+<span id="more"></span>
+
+<h1 id="对操作系统的理解"><a href="#对操作系统的理解" class="headerlink" title="对操作系统的理解"></a>对操作系统的理解</h1><p>@(概述)[操作系统|概念]</p>
+<p><strong>操作系统(Operating System，简称OS）</strong> </p>
+<ul>
+<li><strong>计算机程序</strong> - 是管理和控制计算机硬件与软件资源的计算机程序，</li>
+<li><strong>系统软件</strong> - 直接运行在<strong>裸机</strong>上的最基本的系统软件，同时也是计算机系统的内核与基石。</li>
+<li><strong>接口</strong> - 是用户和计算机的接口，同时也是计算机硬件和其他软件的接口。</li>
+</ul>
+<hr>
+<p>[TOC]</p>
+<h2 id="操作系统的分类"><a href="#操作系统的分类" class="headerlink" title="操作系统的分类"></a>操作系统的分类</h2><p>根据使用环境和对作业处理方式来考虑，可分为</p>
+<blockquote>
+<p>批处理系统 (MVX、DOS&#x2F;VSE)</p>
+<p>分时系统(<strong>WINDOWS</strong>、UNIX、XENIX、<strong>Mac OS</strong>)</p>
+<p>实时系统(iEMX、VRTX、RTOS,RT Linux)</p>
+</blockquote>
+<p>根据所支持的用户数目，可分为</p>
+<blockquote>
+<p>可分为单用户(MSDOS、 OS&#x2F;2)</p>
+<p>多用户系统(UNIX、MVS、Windows)</p>
+</blockquote>
+<p>根据硬件结构，可分为</p>
+<blockquote>
+<p>网络操作系统(Netware、Windows NT、 OS&#x2F;2 warp)<br>分布式系统(Amoeba)、多媒体系统(Amiga)等</p>
+</blockquote>
+<h2 id="五大操作系统详细描述"><a href="#五大操作系统详细描述" class="headerlink" title="五大操作系统详细描述"></a>五大操作系统详细描述</h2><p>操作系统的五大类型是：批处理操作系统、分时操作系统、实时操作系统、网络操作系统、分布式操作系统</p>
+<p>1、批处理操作系统工作方式</p>
+<blockquote>
+<p>户将作业交给系统操作员，系统操作员将许多用户的作业组成一批作业，之后输入到计算机中，在系统中形成一个自动转接的连续的作业流，然后启动操作系统，系统自动、依次执行每个作业。最后由操作员将作业结果交给用户。</p>
+</blockquote>
+<p>2、分时操作系统</p>
+<blockquote>
+<p>一台主机连接了若干个终端，每个终端有一个用户在使用。用户交互式地向系统提出命令请求，系统接受每个用户的命令，采用<strong>时间片轮转方式</strong>处理服务请求，并通过交互方式在终端上向用户显示结果。用户根据上步结果发出下道命令。</p>
+</blockquote>
+<p>3、实时操作系统</p>
+<blockquote>
+<p>计算机能及时响应外部事件的请求, 在规定的严格时间内完成对该事件的处理，并控制所有实时设备和实时任务协调一致地工作的操作系统。</p>
+<p>实时操作系统要追求的目标是：对外部请求在严格时间范围内做出反应，有高可靠性和完整性。</p>
+<p>其主要特点是资源的分配和调度首先要考虑实时性然后才是效率。此外，实时操作系统应有较强的容错能力。</p>
+</blockquote>
+<p>4、网络操作系统</p>
+<blockquote>
+<p>基于计算机网络的，是在各种计算机操作系统上按网络体系结构协议标准开发的软件，包括网络管理、通信、安全、资源共享和各种网络应用</p>
+</blockquote>
+<blockquote>
+<p>其目标是相互通信及资源共享。在其支持下，网络中的各台计算机能互相通信和共享资源。其主要特点是与网络的硬件相结合来完成网络的通信任务。</p>
+</blockquote>
+<p>5、分布式操作系统</p>
+<blockquote>
+<p>大量的计算机通过网络被连结在一起，可以获得极高的运算能力及广泛的数据共享。这种系统被称作分布式系统(DistributedSystem) 。</p>
+</blockquote>
+<h2 id="五大操作系统的优缺点分析"><a href="#五大操作系统的优缺点分析" class="headerlink" title="五大操作系统的优缺点分析"></a>五大操作系统的优缺点分析</h2><h3 id="Table"><a href="#Table" class="headerlink" title="Table"></a>Table</h3><table>
+<thead>
+<tr>
+<th align="left">操作系统</th>
+<th align="left">优点</th>
+<th align="left">缺点</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">批处理操作系统</td>
+<td align="left">资源利用率高，系统吞吐量大</td>
+<td align="left">平均周转时间长，无交互能力</td>
+</tr>
+<tr>
+<td align="left">分时操作系统</td>
+<td align="left">同时性，独立性，及时性，交互性</td>
+<td align="left">分时有限，批处理在后</td>
+</tr>
+<tr>
+<td align="left">实时操作系统</td>
+<td align="left">及时性、实时性、高可靠性、高过载防护性</td>
+<td align="left">在一定时间内完成特定功能</td>
+</tr>
+<tr>
+<td align="left">网络操作系统</td>
+<td align="left">相互通信及资源共享</td>
+<td align="left">不能共享运算处理能力，不可靠性</td>
+</tr>
+<tr>
+<td align="left">分布式操作系统</td>
+<td align="left">透明性、高运算能力、广泛的数据共享</td>
+<td align="left">分布控制</td>
+</tr>
+</tbody></table>
+<h2 id="操作系统的五大功能："><a href="#操作系统的五大功能：" class="headerlink" title="操作系统的五大功能："></a>操作系统的五大功能：</h2><p>1、处理器管理</p>
+<blockquote>
+<p>处理器管理最基本的功能是<strong>处理中断事件</strong>，配置了操作系统后，就可对各种事件进行处理。处理器管理还有一个功能就是<strong>处理器调度</strong>，针对不同情况采取不同的调度策略。</p>
+</blockquote>
+<p>2、存储器管理</p>
+<blockquote>
+<p>存储器管理主要是指针对内存储器的管理。主要任务是<strong>分配内存空间</strong>，保证各作业占用的存储空间不发生矛盾，并使各作业在自己所属存储区中不互相干扰。</p>
+</blockquote>
+<p>3、设备管理</p>
+<blockquote>
+<p>设备管理是指负责<strong>管理各类外围设备</strong>，包括分配、启动和故障处理等。主要任务是当用户使用外部设备时，必须提出要求，待操作系统进行统一分配后方可使用。</p>
+</blockquote>
+<p>4、文件管理</p>
+<blockquote>
+<p>文件管理是指操作系统<strong>对信息资源的管理</strong>。在操作系统中，将负责存取的管理信息的部分称为文件系统。文件管理支持文件的存储、检索和修改等操作以及文件的保护功能。</p>
+</blockquote>
+<p>5、作业管理</p>
+<blockquote>
+<p>每个用户请求计算机系统完成的一个独立的操作称为作业。作业管理包括作业的<strong>输入和输出</strong>，作业的<strong>调度与控制</strong>，这是根据<strong>用户的需要</strong>来控制作业运行的</p>
+</blockquote>
+
       
       
       
@@ -294,6 +408,14 @@
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">操作系统</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">五大分类</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">五大功能</a>
+        		</li>
       		
 		</ul>
 	</div>
@@ -348,7 +470,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/02/10/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F/" alt="微信分享二维码">
+      <img src="//pan.baidu.com/share/qrcode?url=http://example.com/2022/02/11/%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F-1/" alt="微信分享二维码">
     </div>
 </div>
 
@@ -362,15 +484,11 @@
   
 <nav id="article-nav">
   
-    <a href="/2022/02/10/%E6%B5%8B%E8%AF%95mark/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          Marxico
-        
-      </div>
-    </a>
   
+    <a href="/2022/02/10/%E5%B9%B6%E5%8F%91%E4%B8%8E%E5%B9%B6%E8%A1%8C/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">并发与并行</div>
+      <i class="icon-circle-right"></i>
+    </a>
   
 </nav>
 
@@ -398,7 +516,7 @@
   
 
   
-  <div id="SOHUCS" sid="操作系统" ></div> 
+  <div id="SOHUCS" sid="操作系统-1" ></div> 
 <script charset="utf-8" type="text/javascript" src="//changyan.sohu.com/upload/changyan.js" ></script>
 <script type="text/javascript">
     window.changyan.api.config({
@@ -512,6 +630,14 @@ return o(i(t),arguments.length<2?void 0:u(arguments[1]))}})},function(t,n,r){var
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">操作系统</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">五大分类</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">五大功能</a>
               </li>
              
               <li class="article-tag-list-item">
