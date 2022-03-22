@@ -62,7 +62,7 @@
 			</ul>
 		</nav>
 		<nav>
-    			总文章数 3
+    			总文章数 4
 		</nav>
 		<nav class="header-smart-menu">
     		
@@ -149,6 +149,743 @@
           </div>
           <div id="js-content" class="content-ll">
             
+  
+    <article id="post-Springboot整理" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2022/03/22/Springboot%E6%95%B4%E7%90%86/">Springboot整理</a>
+    </h1>
+  
+
+        <!--显示阅读次数-->
+        
+        <!--显示阅读次数完毕-->
+        
+        
+<a href="/2022/03/22/Springboot%E6%95%B4%E7%90%86/" class="archive-article-date">
+  	<time datetime="2022-03-22T13:05:10.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2022-03-22</time>
+</a>
+
+	<!-- 需要添加的位置 -->
+        <!-- 开始添加字数统计-->
+        
+          <div style="margin-top:10px;">
+    <span class="post-time">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-keyboard-o"></i>
+        <span class="post-meta-item-text">  字数统计: </span>
+        <span class="post-count">7.5k字</span>
+      </span>
+    </span>
+
+    <span class="post-time">
+      &nbsp; | &nbsp;
+      <span class="post-meta-item-icon">
+        <i class="fa fa-hourglass-half"></i>
+        <span class="post-meta-item-text">  阅读时长: </span>
+        <span class="post-count">28分</span>
+      </span>
+    </span>
+</div>
+          
+        <!-- 添加完成 -->
+        
+      </header>
+    
+    
+      <!-- 目录内容 -->
+      
+      <!-- 目录内容结束 -->
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Javaweb&gt;spring&gt;springMVC&gt;mybatis&gt;spring高级，spring将new做的更简单，更完美，更可配置</p>
+<p>1.面向切面编程（aop）：是对面向对象编程（oop）的补充 </p>
+<pre><code>面向对象编程将程序分解成各个层次的对象，面向切面编程将程序运行过程分解成各个切面。 
+AOP从程序运行角度考虑程序的结构，提取业务处理过程的切面，从而获得步骤之间的逻辑划分。 
+</code></pre>
+<p>2.简单解释什么是IOC容器？为什么需要IOC容器？（<a target="_blank" rel="noopener" href="https://www.jianshu.com/p/1fa7b15a4828%EF%BC%89">https://www.jianshu.com/p/1fa7b15a4828）</a></p>
+<pre><code>概括：IOC表示控制反转，意思是创建组件的工作不再由程序员控制，而是由IOC容器控制，
+     程序员只负责告诉IOC容器如何创建某个组件，如果想要这个组件，直接从容器中取就是了
+
+具体：
+假设我们现在正在使用三层架构开发一个项目，其中有一个用户模块，包含登录、注册等功能。现在已经写好了User实体类和UserDao数据访问层
+
+  User实体类和UserDao数据访问层如下：
+  
+  <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class User//User实体类</span><br><span class="line">&#123;</span><br><span class="line">    private Integer id;</span><br><span class="line">    private String username;</span><br><span class="line">    private String password;</span><br><span class="line"></span><br><span class="line">    // 以下是getter和setter方法</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public interface UserDao//UserDao数据访问层</span><br><span class="line">&#123;</span><br><span class="line">    // 查找用户</span><br><span class="line">    User get(String username, String password);</span><br><span class="line"></span><br><span class="line">    // 插入用户</span><br><span class="line">    void insert(User user);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class UserDaoImpl implements UserDao</span><br><span class="line">&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public User getByUsername(String username, String password)</span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void insert(User user)</span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+  2.UserDao封装了对数据库中的用户表进行操作。
+    现在，需要一个UserService来封装登录、注册这两个业务逻辑
+
+        代码如下：
+         <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">public interface UserService</span><br><span class="line">&#123;</span><br><span class="line">    // 登录</span><br><span class="line">    User login(String username, String password);</span><br><span class="line"></span><br><span class="line">    // 注册</span><br><span class="line">    void register(User user);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class UserServiceImpl implements UserService</span><br><span class="line">&#123;</span><br><span class="line">    @Override</span><br><span class="line">    public User login(String username, String password)</span><br><span class="line">    &#123;</span><br><span class="line">        User user = userDao.get(username, password); // userDao从哪里来？</span><br><span class="line">        if (user == null)</span><br><span class="line">        &#123;</span><br><span class="line">            // 用户名或密码错误</span><br><span class="line">        &#125;</span><br><span class="line">        return user;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    @Override</span><br><span class="line">    public void register(User user)</span><br><span class="line">    &#123;</span><br><span class="line">        userDao.insert(user); // userDao从哪里来？</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+                
+
+3.显然，UserServiceImpl需要一个UserDao的实例userDao来访问数据库，
+ 那么问题来了：这个userDao如何该获取呢?
+
+4.一般解决：直接在UserServiceImpl内部new一个UserDaoImpl
+
+    代码如下：
+
+            public class UserServiceImpl implements UserService
+            &#123;
+                private UserDao userDao = new UserDaoImpl();
+                ...
+            &#125;
+
+5.存在问题：
+
+    1.现在UserServiceImpl依赖于UserDaoImpl，如果这两个类是由两个不同的人开发的，
+    则他们无法同时工作，因为在UserDaoImpl完成之前，UserServiceImpl无法通过编译
+    
+    2.UserServiceImpl无法被测试，因为它与某个特定的UserDao实现类绑定在了一起，
+    我们不能把它替换成一个用于单元测试的MockUserDao
+    
+    3.如果我们有多套数据库实现（即多个UserDao实现类），那么不能很方便地切换
+
+6.解决问题方法一：构造函数注入
+
+userDao不是由UserServiceImpl本身构造，而是让外部程序通过UserServiceImpl的构造函数传入进来，这种操作称为构造函数注入。
+
+    代码：
+    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">public class UserServiceImpl implements UserService</span><br><span class="line">&#123;</span><br><span class="line">    private UserDao userDao;</span><br><span class="line"></span><br><span class="line">    // 构造函数注入</span><br><span class="line">    public UserServiceImpl(UserDao userDao)</span><br><span class="line">    &#123;</span><br><span class="line">        this.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line">// 外部程序</span><br><span class="line">UserService userService = new UserServiceImpl(new UserDaoImpl());</span><br></pre></td></tr></table></figure>
+
+7.解决问题方法一：setter方法注入
+
+    代码：
+    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">public class UserServiceImpl implements UserService</span><br><span class="line">&#123;</span><br><span class="line">    private UserDao userDao;</span><br><span class="line"></span><br><span class="line">    // setter方法注入</span><br><span class="line">    public void setUserDao(UserDao userDao)</span><br><span class="line">    &#123;</span><br><span class="line">        this.userDao = userDao;</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">// 外部程序</span><br><span class="line">UserService userService = new UserServiceImpl();</span><br><span class="line">userService.setUserDao(new UserDaoImpl());</span><br></pre></td></tr></table></figure>
+8.阶段方法总结：
+
+    组件不负责创建自己依赖的组件，而是让外部程序创建依赖组件，然后通过构造函数或setter函数注入
+
+    其实，这里也蕴含着控制反转的思想，因为创建依赖组件的任务从组件内部转移到了外部程序。
+
+9.下一步问题：
+    项目中的所有组件都按照依赖注入的方式管理自己的依赖，所有组件都由最外层统一组装，
+    如果想替换掉某个组件的实现也很方便，看起来很美好。
+
+    但是，当项目逐渐变得庞大，组件之间的依赖变多的时候，某个组件可能需要依赖于几十个大大小小的
+    其它组件，创建这样的组件就成了一种折磨。
+
+    代码：
+     <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line">public class A</span><br><span class="line">&#123;</span><br><span class="line">    Component1 c1 = new Component1(new Component2(new Component3()), new Component4(new Component5(), new Component6()), new Component7());</span><br><span class="line"></span><br><span class="line">    public void f1()</span><br><span class="line">    &#123;</span><br><span class="line">        // 使用c1</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class B</span><br><span class="line">&#123;</span><br><span class="line">    Component1 c1 = new Component1(new Component2(new Component3()), new Component4(new Component5(), new Component6()), new Component7());</span><br><span class="line"></span><br><span class="line">    public void f2()</span><br><span class="line">    &#123;</span><br><span class="line">        // 使用c1</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">public class C</span><br><span class="line">&#123;</span><br><span class="line">    Component1 c1 = new Component1(new Component2(new Component3()), new Component4(new Component5(), new Component6()), new Component7());</span><br><span class="line"></span><br><span class="line">    public void f3()</span><br><span class="line">    &#123;</span><br><span class="line">        // 使用c1</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+
+10.解决层级依赖：
+
+    为了避免这个问题，可以把系统中所有的组件放进一个“容器”中统一管理：
+
+        代码：
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">public class Container</span><br><span class="line">&#123;</span><br><span class="line">    public static Component1 getComponent1()</span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Component2 getComponent2()</span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    public static Component3 getComponent3()</span><br><span class="line">    &#123;</span><br><span class="line">        ...</span><br><span class="line">    &#125;</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+11.组件动态管理：
+
+    怎么做：
+
+        可以将如何创建组件以及组件之间的依赖关系等信息写入配置文件中，
+
+        然后项目启动时通过读取配置文件来动态创建所有组件，再放到Container中。
+
+    好处：在项目运行时修改配置文件中的组件信息，而无需重新编译，甚至无需重启服务器：
+
+    代码：
+
+        // 创建Container
+        Container container = new ContainerFactory(&quot;container.xml&quot;).create();
+
+        // 获取Component1
+        Component1 c1 = (Component1) container.create(&quot;c1&quot;);
+</code></pre>
+<p>4.注册进IOC容器是什么？</p>
+<pre><code>    将依赖关系，写进IOC容器，并且可以使用实例。
+
+    IOC容器里都是bean类型
+</code></pre>
+<p>5.bean是什么：一种类</p>
+<pre><code>    1、所有属性为private
+
+    2、提供默认构造方法
+
+    3、提供getter和setter获取成员属性
+
+    4、实现serializable接口
+
+    5、Java bean也是一种类，只不过是调用其他对象内部成员函数的类
+</code></pre>
+<p>6.Spring的注解分类：</p>
+<pre><code>一类注解是用于注册bean类
+
+一类注解用于使用bean类。
+</code></pre>
+<p>7.用于注册bean类的注解：（<a target="_blank" rel="noopener" href="https://www.cnblogs.com/yanggb/p/14897327.html%EF%BC%89">https://www.cnblogs.com/yanggb/p/14897327.html）</a><br>                      (<a target="_blank" rel="noopener" href="https://www.cnblogs.com/qianzf/p/8384759.html">https://www.cnblogs.com/qianzf/p/8384759.html</a>)</p>
+<pre><code>@Controller: 处理http请求,用来响应页面，@Controller必须配合模版来使用。
+
+@RestController：返回json, @Controller和@ResponseBody的结合体，两个标注合并起来的作用。
+
+@RequestMapping的使用：配置url映射, 既可以在类使用，又可以方法使用，在类上方使用，
+                       如在该处添加，接口访问时采取路径拼接方式访问。
+
+        代码：
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">@RestController</span><br><span class="line">@RequestMapping(&quot;/hello&quot;)</span><br><span class="line">public class HelloController &#123;</span><br><span class="line"></span><br><span class="line">    @RequestMapping(value=&quot;/sayHello&quot;,method= RequestMethod.GET)</span><br><span class="line">    public String sayHello()&#123;</span><br><span class="line">        return &quot;hello&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">    @RequestMapping(value=&quot;/sayHi&quot;,method= RequestMethod.GET)</span><br><span class="line">    public String sayHi()&#123;</span><br><span class="line">        return &quot;hi&quot;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">sayHello所响应的url=localhost:8080/hello/sayHello。</span><br><span class="line"></span><br><span class="line">sayHi所响应的url=localhost:8080/hello/sayHi。</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+            
+
+@Service和@Resource：对应的是业务层Bean
+
+        代码举例：
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line">@Service(&quot;userService&quot;)</span><br><span class="line">public class UserServiceImpl implements UserService &#123;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">@Service(&quot;userService&quot;)注解是告诉Spring，当Spring要创建</span><br><span class="line">UserServiceImpl的的实例时，bean的名字必须叫做&quot;userService&quot;，</span><br><span class="line"></span><br><span class="line">需要UserServiceImpl的的实例时,只需要声明名字叫“userService”的变量。</span><br><span class="line">就可以使用由Spring创建好的&quot;userService&quot;。</span><br><span class="line"></span><br><span class="line">// 注入userService</span><br><span class="line">@Resource(name = &quot;userService&quot;)</span><br><span class="line">private UserService userService;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">注意：在“userService”变量的类型必须是“UserServiceImpl”或者是其</span><br><span class="line">父类“UserService”，否则由于类型不一致而无法注入。</span><br><span class="line"></span><br><span class="line">由于@Resource注解标注，Spring看到就知道需要UserServiceImpl的实例。并且指明了</span><br><span class="line">其name = &quot;userService&quot;。</span><br><span class="line"></span><br><span class="line">此时Spring把创建好的名字叫做&quot;userService&quot;的UserServiceImpl的实例注入</span><br><span class="line">“userService”变量，帮助完成userService的实例化。</span><br></pre></td></tr></table></figure>
+
+
+@Repository和@Resource：对应数据访问层Bean 
+
+    代码举例：
+    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@Repository(value=&quot;userDao&quot;)</span><br><span class="line">       //注解是告诉Spring，让Spring创建一个名字叫“userDao”的UserDaoImpl实例。</span><br><span class="line">       public class UserDaoImpl extends BaseDaoImpl&lt;User&gt; &#123;</span><br><span class="line">        ………</span><br><span class="line">        &#125;</span><br><span class="line">       当Service需要使用Spring创建的名字叫“userDao”的UserDaoImpl实例时，就可以使用</span><br><span class="line"></span><br><span class="line">       @Resource(name = &quot;userDao&quot;)</span><br><span class="line">       注解告诉Spring，Spring把创建好的userDao注入给Service即可。</span><br><span class="line"></span><br><span class="line">       // 注入userDao，从数据库中根据用户Id取出指定用户时需要用到</span><br><span class="line">       </span><br><span class="line">       @Resource(name = &quot;userDao&quot;)</span><br><span class="line">       private BaseDao&lt;User&gt; userDao;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+    
+   
+@Component：所有受Spring 管理组件的通用形式，@Component注解可以放在类的头上，@Component不推荐使用。
+
+@Configuration：
+        标注在类上，配置spring容器(应用上下文)，底层含有@Component
+                
+        相当于把该类作为spring的xml配置文件中的&lt;beans&gt;
+
+        @Configuration注解的类中，使用@Bean注解标注的方法，返回的类型都会直接注册为bean。
+
+@bean注解：处理第三方jar包
+
+    以上注册bean的注解都存在一定的局限性，局限于只能作用于自己编写的类，
+
+    但是如果jar包的第三方库要加入到ioc容器中的话，这些注解就无能为力了。
+
+    为了解决这样的问题，@bean注解就产生。
+
+@import注解：用来导入配置类或者一些需要前置加载的类.
+
+    代码示例：
+    <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">class Yanggb &#123;</span><br><span class="line"></span><br><span class="line">    @Bean</span><br><span class="line">    public YanggbDao createYanggbDaoBean()&#123;</span><br><span class="line">        return new YanggbDao();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    
+
+    在上面的例子中，createYanggbDaoBean方法就会产生一个YanggbDao对象，并将这个对象交给
+    Spring管理（放到ioc容器中）。
+
+    @bean注解是使用在方法上的注解，它会明确地告诉被注解的方法去产生一个bean对象
+    并交给spring容器管理（放到ioc容器中）。
+
+    简单点说就是，@bean注解放在方法上，让方法去产生一个bean对象交给spring容器（放到ioc容器中）。
+        
+</code></pre>
+<p>8.用于使用bean的注解：</p>
+<pre><code>@resource
+
+@Autowired： 
+    spring自动把bean里面引用的对象的setter/getter方法省略，它会自动帮你set/get。
+     
+    使用Autowired注解就可以直接获得Bean的对象
+
+    举例：
+
+       在userService里面要做一个userDao的setter/getter方法。
+
+       但如果用了@Autowired的话，只需要在UserService的实现类中声明即可。
+
+        @Autowired
+        private IUserDao userdao;
+</code></pre>
+<p>9.IOC操作Bean管理：</p>
+<pre><code>（1）spring创建对象 
+
+（2）spring注入容器。
+
+    当我们在将一个类上标注@Service或者@Controller或@Component或@Repository注解之后，
+
+    spring的组件扫描就会自动发现它，并且会将其初始化为spring应用上下文中的bean。
+
+    当需要使用这个bean的时候，例如加上@Autowired注解的时候，这个bean就会被创建。
+
+    而且初始化是根据无参构造函数。
+</code></pre>
+<p>10.Bean的生命周期（<a target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1hp4y1h7Di%EF%BC%89%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81%EF%BC%81">https://www.bilibili.com/video/BV1hp4y1h7Di）！！！！！！！</a></p>
+<pre><code>@component
+public class tt&#123;
+
+&#125;//bean的定义
+
+class(userS)------&gt;实例化------&gt;对象---
+
+---&gt;属性填充（对象里面可能有@Autowired注解的privata定义的属性)
+
+---&gt;afterPropertiesSet 初始化（对象里面可能privata定义的属性
+    （比如默认用户信息，需要去数据库查出来，implements InitialzingBean添加到public头尾巴,
+    然后@Overridez注解afterPropertiesSet方法，进行重写，比如sql语句等））---
+  
+---&gt;A0P（进行判断要不要aop,先到切面注解@compent去找切点，对应切点存在就进行aop）---
+
+---&gt;代理对象（使用cglib进行动态代理，子类继承父类，子类重写父类方法，执行切面切点逻辑，
+执行完后，执行父类方法，）----
+
+--&gt;Bean
+</code></pre>
+<p>11.其他常见注解作用：影响程序运行</p>
+<pre><code>@PostConstruct： 可以代替，implements InitialzingBean告诉spring在设置属性后来注解类下面进行初始化
+
+@Override, 告诉编译器这个方法是覆盖父类的方法
+
+@Controller()， 表示某个类是一个控制器
+</code></pre>
+<p>项目前后台交互两种方式：（<a target="_blank" rel="noopener" href="https://www.cnblogs.com/jedjia/p/controller.html%EF%BC%89">https://www.cnblogs.com/jedjia/p/controller.html）</a></p>
+<pre><code>普通整体页面提交，比如form提交；@Controller就是整体页面刷新提交的处理注解
+
+局部刷新，或者叫做异步刷新，ajax提交；@RestController就是ajax提交，一般返回json格式
+</code></pre>
+<p>单例模式：</p>
+<pre><code>    确保一个类在任何情况下都绝对只有一个实例，并提供一个全局访问点。
+
+    springboot 默认采用的是单例模式。
+</code></pre>
+<p>Spring单例模式与线程安全：</p>
+<pre><code>为什么会出现线程安全问题：
+当多用户同时请求一个服务时，容器会给每一个请求分配一个线程，这是多个线程会并发执行该请求多对应的业务逻辑（成员方法）
+
+  如果该处理逻辑中有对该单列状态的修改（体现为该单列的成员属性），则必须考虑线程同步问题
+</code></pre>
+<p>若父类多例模式（加@Scope(“prototype”)），子类controller并没有加该注解，<br>会怎样呢？该注解是否还有意义？</p>
+<pre><code>同一子类继承的为同一父类，不同子类继承为不同父类。
+
+因为springboot为单例模式，所以子类为单例，那么只有一个子类，父类肯定是一样的。
+所以，不同线程过来使用的为同一变量，就会有问题。
+</code></pre>
+<p>若service多例模式（（加@Scope(“prototype”)），controller没有加@Scope(“prototype”)注解，<br>那么会出现什么样的结果呢？</p>
+<pre><code>那在同一个controller里，该service还是同一个，也就是说还是单例的，
+在不同的controller里 是不同的。
+</code></pre>
+<p>对于单例模式的线程安全问题解决办法：(<a target="_blank" rel="noopener" href="https://blog.csdn.net/crq1205/article/details/94017439">https://blog.csdn.net/crq1205/article/details/94017439</a>)</p>
+<pre><code>1.在controller的类和子类上，在service上 都加上@Scope(&quot;prototype&quot;)注解。
+  这样做的好处是简单。坏处也同样明显，因为是多例的，那么就会产生大量的实体类，占用大量内存，
+  若是回收不及时，有可能会出现内存溢出。
+  
+2.将变量私有化，比如使用线程变量，对变量加锁等，技术上会复杂一些，而且调试不太好调试。
+  说不定那些地方就会出现问题，毕竟是老代码。
+
+3.将该类转换为拦截器，将变量放入request里，用的时候取出来。
+</code></pre>
+<p>SpringBoot框架中的DAO层、Model层、Service层、Controller层</p>
+<pre><code>Model层：
+    实体层，数据库在项目中的类，该文件包含实体类的属性和对应属性的set、get方法；
+
+DAO层：持久层   
+
+    主要与数据库进行交互，DAO层=mapper层，现在用Mybatis逆向工程生成的mapper层，其实就是dao层。
+    DAO层会调用Model层，DAO中会定义实际使用到的方法，比如增删改查。
+    DAO层的 数据源 和 数据库 连接的参数都是在配置文件中进行配置，配置文件一般在同层的XML文件夹中。
+
+    数据持久化操作就是指，把数据放到持久化的介质中（？？？？？？不懂），同时提供增删改查操作
+
+Service层：
+    业务层 控制业务 service层主要负责业务模块的逻辑应用设计。
+    先设计放接口的类，再创建实现的类，然后在配置文件中进行配置其实现的关联。
+    service层调用dao层接口，接收dao层返回的数据，完成项目的基本功能设计
+
+    封装Service层的业务逻辑有利于业务逻辑的独立性和重复利用性。
+
+Controller层：
+    控制层 控制业务逻辑 具体的业务模块流程的控制.
+    controller层负责前后端交互，接受前端请求，调用service层，接收service层返回的数据，
+    最后返回具体的页面和数据到客户端。
+
+
+形象介绍：    
+    Controller层像是一个服务员，他把客人（前端）点的菜（数据、请求的类型等）进行汇总什么口味、
+    咸淡、量的多少，交给厨师长（Service层）。
+    
+    厨师长则告诉沾板厨师（Dao 1）、汤料房（Dao 2）、配菜厨师（Dao 3）等（统称Dao层）
+    我需要什么样的半成品，副厨们（Dao层）就负责完成厨师长（Service）交代的任务。
+</code></pre>
+<p>具体的项目流程为：</p>
+<pre><code>     Controller--&gt;service接口--&gt;serviceImpl--&gt;dao接口--&gt;daoImpl--&gt;mapper--&gt;db
+    Controller层调用Service层的方法，Service层调用Dao层中的方法，其中调用的参数是使用Entity层进行传递的。
+
+      优点：总的来说这样使业务逻辑更加清晰，写代码更加方便。其实就是提供一种规则，
+           让你把相同类型的代 码放在一起，这样就形成了层次，
+           从而达到分层解耦、复用、便于测试和维护的目的。
+</code></pre>
+<p>springboot启动流程 </p>
+<pre><code>整体：Springboot的启动，主要创建了配置环境(environment)、事件监听(listeners)、应用上下文(applicationContext)，并基于以上条件，
+
+     在容器中开始实例化我们需要的Bean，至此，通过SpringBoot启动的程序已经构造完成。
+
+
+    1.Springboot的启动类入口
+        <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@SpringBootApplication</span><br><span class="line">public class Application &#123;</span><br><span class="line">    public static void main(String[] args) &#123;</span><br><span class="line">        SpringApplication.run(Application.class, args);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+        SpringBootApplication接口在其中比较重要的有三个注解，分别是：
+
+    　　1）@SpringBootConfiguration // 继承了Configuration，表示当前是注解配置类，会被扫描并且加载到ioc容器里面
+
+    　　2）@EnableAutoConfiguration // 开启springboot的注解功能，springboot的四大神器之一，其借助@import的帮助
+
+    　　3）@ComponentScan(excludeFilters = ）
+         //可自动发现和装配Bean，默认扫描SpringApplication的run方法里的
+         Booter.class所在的包路径下文件，所以最好将该启动类放到根包路径下
+
+    2.首先进入run方法中，创建一个SpringApplication实例。
+
+    3.调用SpringApplication实例的run方法，调用了一个初始化的initialize方法，
+    主要是为SpringApplication对象赋一些初值。
+    
+    4.然后回到SpringApplication实例的run方法。
+
+        1.创建了应用的监听器SpringApplicationRunListeners并开始监听
+
+        2.加载SpringBoot配置环境(ConfigurableEnvironment)，
+
+          如果是通过web容器发布，会加载StandardEnvironment，
+
+          其最终也是继承了ConfigurableEnvironment
+
+        3.配置环境(Environment)加入到监听器对象中(SpringApplicationRunListeners)
+
+        4.创建run方法的返回对象：ConfigurableApplicationContext(应用配置上下文)
+
+            1.先获取显式设置的应用上下文(applicationContextClass)，
+
+            2.如果不存在，再加载默认的环境配置（通过是否是web environment判断），
+
+            3.默认选择AnnotationConfigApplicationContext注解上下文
+            （通过扫描所有注解类来加载bean），
+
+            4.最后通过BeanUtils实例化上下文对象，并返回
+
+    5.回到run方法内，prepareContext方法将listeners、environment、
+     applicationArguments、banner等重要组件与上下文对象关联
+
+    6.接下来的refreshContext(context)方法：
+
+         实现spring-boot-starter-*(mybatis、redis等)自动化配置的关键，包括
+         spring.factories的加载，bean的实例化等核心工作。
+
+     7.配置结束后，Springboot做了一些基本的收尾工作，返回了应用环境上下文。
+</code></pre>
+<p>Spring XML配置文件：</p>
+<pre><code>spring配置文件是用于指导Spring工厂进行Bean生产、依赖关系注入（装配）及Bean实例分发的&quot;图纸&quot;。
+
+Spring框架的配置文件是基于xml的，Spring强大的功能依赖于类型繁多的配置项。
+</code></pre>
+<p>mybatis如何自动生成Spring XML配置文件 （<a target="_blank" rel="noopener" href="https://www.cnblogs.com/ruo-/p/3950058.html%EF%BC%89">https://www.cnblogs.com/ruo-/p/3950058.html）</a></p>
+<pre><code>        1.首先需要在数据库建好表。(商品，订单量)
+
+        2.下载mybatis-generator-core包
+
+        　　下载地址：http://search.maven.org/
+
+        　　然后搜索mybatis-generator-core下载即可
+
+        3.下载mysql-connector-java包
+
+        　　因为我们是根据数据库表来生产配置文件，当然需要连接到数据库了，那也就是需要驱动包了。
+
+        　　下载地址：http://search.maven.org/
+
+        　　然后搜索mysql-connector-java，选择需要的版本下载即可
+
+        4.generator.xml文件
+            （1）修改mysql驱动的路径（mysql-connector-java）
+
+            （2）修改数据库的url 用户名 密码
+
+            （3）修改保存自动生成文件的路径
+
+                注:这里的model,mapper,dao三个路径都需要修改，否则就找不到路径了
+        　        
+        5.运行
+
+            run, 找 edit configurations, 找maven， 找run, 输入 mybatis-generator:generate，运行这个。
+            model,mapper,dao，的xml文件都生成了
+</code></pre>
+<p>　　<br>dao层的xml文件，model层的xml文件，mapper层的xml文件</p>
+<pre><code>    dao层的xml文件：int deleteByPrimaryKey(Integer id)含有插入删除更新等函数
+
+    model层的xml文件：含有表的各列初始化定义，private Integer id;
+
+    mapper层的xml文件：含有对表操作的sql语句
+</code></pre>
+<p>SpringBoot自动配置模块（配置xml文件）（<a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv6491385%EF%BC%89">https://www.bilibili.com/read/cv6491385）</a></p>
+<pre><code>  （指的是SpringBoot会自动将一些配置的bean类注册进ioc容器，使用@autowired或者
+   @resource等注解的类可以直接使用）
+   
+   该配置模块的主要使用到了SpringFactoriesLoader，即Spring工厂加载器。
+
+   该对象提供了loadFactoryNames方法，入参为factoryClass和classLoader，即需要
+   传入上图中的工厂类名称和对应的类加载器，
+
+   方法会根据指定的classLoader，加载该类加载器搜索路径下的指定文件，即spring.factories文件，
+
+   传入的工厂类为接口，而文件中对应的类则是接口的实现类，或最终作为实现类。
+
+   获取到这些实现类的类名后，loadFactoryNames方法返回类名集合，再通过反射获取这些类的类对象、
+   构造方法，最终生成实例。（注入IOC容器中）
+</code></pre>
+<p>Tomcat到底是干嘛的：免费开源</p>
+<pre><code>装载javaweb程序，可以称它为web容器，jsp/servlet程序需要运行在Web容器上，
+Web容器有很多种，Tomcat是其中一种。
+
+tomcat是一种web服务器，也可以称作运行在服务器（物理意义上的计算机）上的一种软件包。
+用来对服务器上的HTML文档提供访问权限控制。
+
+你从甲计算机上的文档A通过超链接访问乙计算机上的文档B，而B必须放在Web服务器（Tomcat）里才能被访问。
+
+Tomcat不仅仅是一个Servlet容器，它也具有传统的Web服务器的功能：处理Html页面。
+
+总结：就是web应用放到tomcat里面才能跑得起来，而tomcat里面对项目有规定特定的格式，
+就是war包的格式，这就是为什么我们需要把项目打成war才能丢进去。
+</code></pre>
+<p>Tomcat所做的事情主要有：</p>
+<pre><code>1.开启监听端口监听用户的请求，
+
+2.解析用户发来的http请求然后访问到指定的应用系统，
+
+3.然后返回的页面经过tomcat返回给用户。
+
+简单总结：tomcat是一个中间件，在B/S架构中，浏览器发出的http请求经过tpmcat中间件，
+转发到最终的目的服务器上，响应消息再通过tomcat返回给浏览器。
+</code></pre>
+<p>Servlet是什么：</p>
+<pre><code>开发动态web资源的技术(即开发一个Java程序向浏览器输出数据)
+</code></pre>
+<p>　　<br>API中提供了一个servlet接口，用户需要完成以下2个步骤：</p>
+<pre><code>1、编写一个Java类，实现servlet接口。
+
+2、把开发好的Java类部署到web服务器中。
+
+按照一种约定俗成的称呼习惯，我们把实现了servlet接口的java程序，称之为Servlet
+</code></pre>
+<p>Servlet的运行过程：</p>
+<pre><code> Servlet程序是由WEB服务器调用，web服务器收到客户端的Servlet访问请求后：
+</code></pre>
+<p>　　</p>
+<pre><code>①Web服务器首先检查是否已经装载并创建了该Servlet的实例对象。
+  如果是，则直接执行第④步，否则，执行第②步。
+
+②装载并创建该Servlet的一个实例对象。 
+
+③调用Servlet实例对象的init()方法。
+　
+④创建一个用于封装HTTP请求消息的HttpServletRequest对象， 一个代表HTTP响应消息的HttpServletResponse对象，
+  然后调用Servlet的service()方法并将请求和响应对象作为参数传递进去。
+
+⑤WEB应用程序被停止或重新启动之前，Servlet引擎将卸载Servlet，
+ 并在卸载之前调用Servlet的destroy()方法。
+</code></pre>
+<p>Servlet接口实现类：</p>
+<pre><code>HttpServlet指能够处理HTTP请求的servlet，它在原有Servlet接口上添加了一些
+与HTTP协议处理方法，它比Servlet接口的功能更为强大。
+
+因此开发人员在编写Servlet时，通常应继承这个类，而避免直接去实现Servlet接口。
+
+HttpServlet在实现Servlet接口时，覆写了service方法，该方法体内的代码会自动判断
+用户的请求方式，如为GET请求，
+
+则调用HttpServlet的doGet方法，如为Post请求，则调用doPost方法。
+
+因此，开发人员在编写Servlet时，通常只需要覆写doGet或doPost方法，而不要去覆写service方法。
+</code></pre>
+<p>Servlet的线程安全问题：</p>
+<pre><code>当多个客户端并发访问同一个Servlet时，web服务器会为每一个客户端的访问请求创建一个线程，
+并在这个线程上调用Servlet的service方法。
+
+因此service方法内如果访问了同一个资源的话，就有可能引发线程安全问题。
+</code></pre>
+<p>解决Servlet的线程安全问题：（<a target="_blank" rel="noopener" href="https://blog.csdn.net/zj12352123/article/details/80576748%EF%BC%89">https://blog.csdn.net/zj12352123/article/details/80576748）</a></p>
+<pre><code>方法一（过时）：
+
+Servlet去实现一个SingleThreadModel接口（属于标记接口），如果某个Servlet实现了SingleThreadModel接口，那么Servlet引擎将以单线程模式来调用其service方法。  
+
+同时仍然支持对该Servlet的的多线程并发访问，其采用的方式是产生多个Servlet的实例对象，并发的每个线程分别调用一个独立的Servlet的实例对象。
+</code></pre>
+<p>　　 </p>
+<pre><code>方法二：
+
+  防止线程安全的问题就是避免使用实例变量，采用局部变量的形式。
+如果应用程序设计无法避免使用实例变量，那么使用同步来保护要使用的实例变量，但为保证系统的最佳性能，应该同步可用性最小的代码路径。
+这些MVC框架基本的原理都是将所有的请求都映射到一个Servlet，然后去实现service方法，这个方法也就是MVC框架的入口。
+</code></pre>
+<p>标记接口：在Java中，把没有定义任何方法和常量的接口称之为标记接口</p>
+<pre><code> 举例：
+     SingleThreadModel接口：Servlet引擎将以单线程模式来调用其service方法。  
+
+      serializable: 告诉JVM，这个对象可以做什么，比如
+                    实现了&quot;Serializable&quot;接口的类的对象就可以被序列化
+
+      Cloneable接口: 这个也是一个标记接口，在默认情况下，Java中的对象是不允许被克隆的，
+      就像现实生活中的人一样，不允许克隆，但是只要实现了&quot;Cloneable&quot;接口，那么对象就可以被克隆了。
+</code></pre>
+<p>Spring Mvc中DispatcherServlet：</p>
+<pre><code>SpringMvc通过DispatcherServlet实现了Servlet这个接口，又叫前端控制器，来自前端的请求会
+先到达这里，它负责到后台去匹配合适的handler。
+</code></pre>
+<p>handler，handlermapping，adapter：(<a target="_blank" rel="noopener" href="https://blog.csdn.net/liuhaibo_ljf/article/details/105806146">https://blog.csdn.net/liuhaibo_ljf/article/details/105806146</a>)</p>
+<pre><code>用BeanNameUrlHandlerMapping来举个例子:
+
+  当DispatcherServlet中初始化的时候，会从容器中handlermapping，如果找不到就会使用默认的
+BeanNameUrlHandlerMapping，
+
+  BeanNameUrlHandlerMapping的策略就是，如果在spring-mvc.xml中声明的bean，id以/开头，
+例如下面的样子： 
+
+&lt;bean id=&quot;/user&quot; class=&quot;com.controller.BeanNameURLHandlerMappingController&quot;/&gt;
+
+那么BeanNameUrlHandlerMapping就认为后面的class就属于一个handler，
+并且id的值/user就是作为映射的url，也就是说将来请求的如果是/user，那么便会使用
+BeanNameURLHandlerMappingController来处理这个请求
+
+对于其他的handlermapping:
+
+    会有各自的不同的识别和绑定url和handler的策略和约定。
+
+    在使用中，你可以通过在xml中声明不同的handlermapping的类，让他们把我们handler和请求
+    映射起来。
+
+    也就是说我们可以指定使用不同的handlermapping或者自定义handlermapping
+
+通过上面二者，url和handler就映射绑定成功了，但是要用handler里的什么方法来处理这个请求呢？
+
+    也就是实际调用handler中处理请求的方法就是adapter了，
+
+    因为处理请求的最终用的是handler里面的方法。
+
+那么到底应该用什么方法？是自己随便写方法？还是必须重写一个规定的方法呢？
+
+    这就取决于你的handler属于那种adapter了。怎么知道我们写的handler属于那种adapter呢。
+    
+    如果你的handler实现了Controller接口，那么就属于  SimpleControllerHandlerAdapter了，属于这个adapter，
+
+    那么我们的handler就必须有handlerRequest这样一个方法（handle方法中调用的)，
+    以后用来处理请求
+
+    （其实这个方法就是Controller接口中的方法，因为实现一个接口，肯定就必须重写这个方法）。
+
+    这也就保证SimpleControllerHandlerAdapter的handle方法中调用不会出错。
+
+    说白了就是面向接口编程，你的handler如果属于我这个接口（supports为true），
+    然后就用这个方法来处理请求。
+
+    因此只要我们写的controller重写了这个handleRequest方法，就可以在这个方法中处理请求了。
+</code></pre>
+<p>DispatcherServlet 处理流程：是前端控制器设计模式的实现</p>
+<pre><code>（https://www.cnblogs.com/tengyunhao/p/7518481.html）
+（http://www.51gjie.com/javaweb/916.html）
+
+ 1.Tomcat 启动，对 DispatcherServlet 进行实例化，然后调用它的 init() 方法进行初始化：
+
+      初始化： 对 web.xml 中初始化参数的加载（比如映射路径8080/user/get）
+
+             建立 WebApplicationContext (SpringMVC的IOC容器)
+
+             进行组件的初始化：
+
+                HandlerMapping-处理器映射器，是用来查找Handler的。
+
+                HandlerAdapter-处理器适配器，让固定的Servlet处理方法调用灵活的Handler处理
+
+                HandlerExceptionResolver：对异常情况进行处理，此组件的作用是根据异常设置
+                ModelAndView，之后再交给render方法进行渲染
+
+                ViewResolver-视图解析器：ViewResolver用来将String类型的视图名和Locale
+                解析为View类型的视图
+
+2.客户端发出请求，由 Tomcat 接收到这个请求，如果匹配 到DispatcherServlet 在 web.xml 中配置的映射路径（8080/user/get），Tomcat 就将请求转交给 DispatcherServlet 处理
+         
+3.根据请求信息，通过自己实现类中的方式去找到处理该请求的 Handler ：
+
+    具体：DispatcherServlet 从IOC容器取出所有 HandlerMapping 实例并遍历
+
+         每个 HandlerMapping 会根据请求信息，通过自己实现类中的方式去找到处理该请求的 Handler (执行程序，如Controller中的方法)
+
+           并且将这个 Handler 与一堆 HandlerInterceptor (拦截器) 封装成一个 HandlerExecutionChain 对象
+
+           一旦有一个 HandlerMapping 可以找到 Handler 则退出循环
+        
+4.DispatcherServlet 取出 HandlerAdapter 组件，根据已经找到的 Handler，再从所有 HandlerAdapter 中找到可以处理该 Handler 的 HandlerAdapter 对象；
+  
+5.执行 HandlerExecutionChain 中所有拦截器的 preHandler() 方法，
+
+  然后再利用 HandlerAdapter 执行 Handler ，执行完成得到 ModelAndView，
+
+  再依次调用拦截器的 postHandler() 方法；
+
+6.利用 ViewResolver 将 ModelAndView 或是 Exception（可解析成 ModelAndView）解析成 View，
+
+  然后 View 会调用 render() 方法，再根据 ModelAndView 中的数据渲染出页面；
+
+7.最后再依次调用拦截器的 afterCompletion() 方法，这一次请求就结束了。
+
+
+
+
+
+
+
+
+
+
+
+   
+</code></pre>
+
+      
+      
+      
+
+      
+      
+      
+      
+        <div class="declare" hidden="hidden"></div>
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2022/03/22/Springboot%E6%95%B4%E7%90%86/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+    </div>
+</aside>
+
+
+
+
   
     <article id="post-操作系统-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
